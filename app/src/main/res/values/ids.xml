@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="settings_search_btn" type="id" />
+    <item name="switch_notifications" type="id" />
+    <item name="spinner_type" type="id" />
+    <item name="spinner_radius" type="id" />
+</resources>

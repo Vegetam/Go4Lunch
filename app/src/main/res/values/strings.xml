@@ -1,0 +1,190 @@
+<resources>
+    <string name="app_name">Go4Lunch</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_action_bar_hungry">I\'am hungry!</string>
+    <string name="title_action_bar_workmate">Available users</string>
+
+    <string name="main_activity_description">Find a nice restaurant and invite your co-workers for lunch</string>
+
+
+    <!-- Strings for On Boarding Screen -->
+
+    <!-- Titles -->
+    <string name="first_slide_title">Welcome</string>
+    <string name="second_slide_title">Pin it</string>
+    <string name="third_slide_title">Chat</string>
+    <string name="fourth_slide_title">Have fun</string>
+
+    <!-- Description -->
+    <string name="first_slide_desc">Go4lunch will allow you to find restaurants near you and to share your restaurant choice with coworkers.</string>
+    <string name="second_slide_desc">All the nearby restaurants are shown on the map using custom pins.</string>
+    <string name="third_slide_desc">Just before the lunch break, the app will notify different employees and invite them to join their coworkers.</string>
+    <string name="fourth_slide_desc">Good lunch is all the sweeter when shared with friends</string>
+
+    <!-- Buttons -->
+    <string name="skip_btn">Skip</string>
+    <string name="next_btn">Next</string>
+    <string name="let_get_started">Lets Get Started</string>
+
+
+    <!--OC-->
+
+    <string name="login">Sign in</string>
+
+    <!-- NOTIFICATION SERVICE -->
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="notification_title">"You have received a notification"</string>
+
+    <!-- MAIN ACTIVITY -->
+    <string name="error_not_connected">You must log in !</string>
+    <string name="error_authentication_canceled">Authentication canceled</string>
+    <string name="error_no_internet">No internet connection!</string>
+    <string name="error_unknown_error">An unknown error has occurred</string>
+    <string name="connection_succeed">Successful authentication!</string>
+    <string name="button_login_text_logged">Display Profil</string>
+    <string name="button_login_text_not_logged">Sign in</string>
+
+    <!-- LOGIN ACTIVITY -->
+    <string name="toolbar_title_login_activity">Your profile</string>
+    <string name="text_input_username">Username</string>
+    <string name="text_view_email">E-mail address :</string>
+    <string name="button_update_account">Update username</string>
+    <string name="button_delete_account">Delete my account</string>
+    <string name="button_sign_out_account">Logout</string>
+    <string name="info_no_email_found">No email address</string>
+    <string name="info_no_username_found">No username</string>
+    <string name="popup_message_confirmation_delete_account">Are you sure you want to delete your account?</string>
+    <string name="popup_message_choice_yes">Yes !</string>
+    <string name="popup_message_choice_no">No</string>
+    <string name="check_box_is_workmates">Are you a workmates?</string>
+
+    <!-- CHAT ACTIVITY -->
+    <string name="text_input_title_chat_activity">Send your message</string>
+    <string name="button_title_chat_activity">SEND</string>
+    <string name="text_view_chat_error">This thread currently contains no messages…</string>
+
+
+    <!-- Navigation bottom View -->
+    <string name="title_map_view">Map View</string>
+    <string name="title_list_view">List View</string>
+    <string name="title_workmates">Workmates</string>
+
+    <!-- Toolbar icon -->
+
+    <string name="toolbar_icon_search">Search restaurants</string>
+    <!-- SEARCH -->
+    <string name="search_workmates">Search users</string>
+    <string name="search_restaurant">Search a restaurant</string>
+
+    <!-- Menu drawer-->
+    <string name="your_lunch">YOUR LUNCH</string>
+    <string name="settings">SETTINGS</string>
+    <string name="logout">LOGOUT</string>
+    <string name="user">User name</string>
+    <string name="userEmail">Email</string>
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <!-- Fragment string -->
+    <string name="map_fragment_text">Map</string>
+    <string name="list_fragment_text">List</string>
+    <string name="mates_fragment_text">Mates</string>
+
+
+    <!-- SETTINGS -->
+    <string name="manifest_settings">Settings</string>
+    <string name="update_email">Update userEmail</string>
+    <string name="delete_account">Delete account</string>
+    <string name="user_name">User name</string>
+    <string name="update_user_name">Update user name</string>
+    <string name="login_image">login image</string>
+    <string name="info_no_user_name_found">No user name found</string>
+    <string name="popup_title">Delete account?</string>
+
+
+    <!-- FACEBOOK PURPOSE -->
+    <string name="facebook_application_id" translatable="false">Your Application ID</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">Your Schema ID</string>
+    <string name="facebook_client_token">Your client token</string>
+    <!-- Google PURPOSE -->
+
+    <string name="toolbar_title">I\'m Hungry!</string>
+    <string name="gps_location">relocate  to your current location</string>
+    <string name="workmates">Available workmates</string>
+    <string name="photo_profile">workmate profile image</string>
+    <!--WORKMATES -->
+    <string name="not_decided_ex">"Gaspard has not decided yet."</string>
+    <string name="not_decided">" has not decided yet."</string>
+    <string name="decided">" eat at the restaurant:"</string>
+
+    <!--restaurant -->
+    <string name="no_openinghours">"Schedules are not available."</string>
+    <string name="isjoining">" is joining!"</string>
+    <string name="no_hours">"Schedules are not available."</string>
+    <string name="open_at">"Open at "</string>
+    <string name="open_until">"Open until "</string>
+    <string name="closed">Closed</string>
+    <string name="closed_today">"Closed today"</string>
+    <string name="always_open">"Open 24/7"</string>
+    <string name="restaurant_name">"Name of restaurant"</string>
+    <string name="restaurant_address">"Address of restaurant"</string>
+    <string name="restaurant_open">"Open hours of restaurant"</string>
+    <string name="restaurant_distance">"Distance"</string>
+    <string name="logo_colleagues">"logo number of colleagues"</string>
+    <string name="restaurant_number_colleagues">"number of colleagues"</string>
+    <string name="restaurant_star">"star"</string>
+    <string name="restaurant_photo">"photo"</string>
+    <!--DETAIL -->
+    <string name="call">"Call"</string>
+    <string name="website">"Website"</string>
+    <string name="like">"Like"</string>
+
+    <!-- PHONE CALL -->
+    <string name="no_phone_number">"Phone number is not available"</string>
+    <string name="no_permission_for_call">"Go4Lunch does not have permission to make calls"</string>
+
+    <!-- WEBSITE -->
+    <string name="no_website">"The website address is not available"</string>
+    <string name="no_lunch">"You have not chosen a restaurant yet!"</string>
+    <string name="error">"An error has occurred"</string>
+
+
+    <!-- NOTIFICATION ACTIVITY -->
+    <string name="notif_title">"My restaurant"</string>
+    <string name="notif_message1">"Today your meal break will be at: "</string>
+    <string name="notif_message2">"You will have a good time with:  "</string>
+
+    <string name="notifications_onoff">"Would you like to receive a notification at midday telling you about the happy workmates who will join you?"</string>
+
+    <string name="newsearch">"Relaunch the search"</string>
+    <!-- SETTINGS ACTIVITY -->
+    <string name="radius_text">"How far do you want to search? (in meters)"</string>
+    <string-array name="radius_array">
+        <item>200</item>
+        <item>500</item>
+        <item>1000</item>
+    </string-array>
+
+    <string name="type_text">"What kind of establishments are you looking for?"</string>
+    <string-array name="type_array">
+        <item>restaurant</item>
+        <item>bar</item>
+        <item>cafe</item>
+    </string-array>
+
+
+    <!-- CHAT ACTIVITY -->
+    <string name="toolbar_title_chat_activity">Chats</string>
+    <string name="text_input_title_user_chat_activity">Compose your message</string>
+    <string name="button_title_user_chat_activity">SEND</string>
+    <string name="text_view_user_chat_error">This thread contains for the moment no message</string>
+    <string name="popup_title_permission_files_access">This application needs permission to work.</string>
+    <string name="toast_title_no_image_chosen">"No image chosen …"</string>
+    <string name="chat_image_preview">"Image"</string>
+    <string name="chat_add">"Add an image"</string>
+    <string name="chat_title_restaurants">"Which restaurant for today?"</string>
+    <string name="chat_title_good">"Good times!"</string>
+    <string name="chat_image_sent">"Image sent"</string>
+    <string name="chat_image_profile">"Photo profil"</string>
+</resources>
