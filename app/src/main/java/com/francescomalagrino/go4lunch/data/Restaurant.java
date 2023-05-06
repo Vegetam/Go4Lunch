@@ -3,13 +3,15 @@ package com.francescomalagrino.go4lunch.data;
 import android.widget.ImageView;
 
 import com.francescomalagrino.go4lunch.BuildConfig;
+import com.francescomalagrino.go4lunch.data.details.OpeningHours;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.firestore.ServerTimestamp;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-public class Restaurant {
+public class Restaurant implements Serializable {
     private String restoName;
     private Date dateCreated;
     private String address;
@@ -22,18 +24,31 @@ public class Restaurant {
 
     private List<String> clientsTodayList;
 
+    private String formattedAddress;
+    private String phoneNumber;
+
+    private List<User> hasBeenReservedBy=new ArrayList<>();
+
+    private String vicinity;
+
+    private OpeningHours openingHours;
+
     public Restaurant() {}
+
 
     public Restaurant(String restoName, String address) {
         this.restoName = restoName;
         this.clientsTodayList = new ArrayList<>();
         this.address = address;
+        this.formattedAddress=formattedAddress;
         this.lat= lat;
         this.lng=lng;
         this.placeId=placeId;
         this.photoReferece=photoReferece;
         this.rating=rating;
         this.website=website;
+        this.phoneNumber=phoneNumber;
+        this.hasBeenReservedBy = new ArrayList<User>(hasBeenReservedBy);
     }
 
     // --- GETTERS ---
@@ -100,7 +115,57 @@ public class Restaurant {
         this.website = website;
     }
 
+    public String getFormattedAddress() {
+        return formattedAddress;
+    }
+
+    public void setFormattedAddress(String formattedAddress) {
+        this.formattedAddress = formattedAddress;
+    }
+
     public String getPhotoUrl() {
         return "https://maps.googleapis.com/maps/api/place/photo?key=" + BuildConfig.API_KEY+"&photo_reference="+ photoReferece + "&maxwidth=400";
     }
+
+    public String setPhotoUrl() {
+        return "";
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+
+    public List<User> getHasBeenReservedBy() {
+        return hasBeenReservedBy;
+    }
+
+    public void setHasBeenReservedBy(List<User> hasBeenReservedBy) {
+        this.hasBeenReservedBy = hasBeenReservedBy;
+    }
+
+    public void addHasBeenReservedBy(User user){
+        hasBeenReservedBy.add(user);
+    }
+
+    public String getVicinity() {
+        return vicinity;
+    }
+
+    public void setVicinity(String vicinity) {
+        this.vicinity = vicinity;
+    }
+
+    public OpeningHours getOpeningHours() {
+        return openingHours;
+    }
+
+    public void setOpeningHours(OpeningHours openingHours) {
+        this.openingHours = openingHours;
+    }
+
 }

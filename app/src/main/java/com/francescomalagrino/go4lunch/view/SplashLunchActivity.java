@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.francescomalagrino.go4lunch.R;
+import com.francescomalagrino.go4lunch.ui.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

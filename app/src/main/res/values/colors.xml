@@ -16,4 +16,11 @@
     <color name="white">#fff</color>
     <color name="black">#000000</color>
     <color name="card_bg_color">#FFFFFF</color>
+    <color name="red">#C60A0A</color>
+    <color name="green">#60BE64</color>
+    <color name="light_primary">#E3AC92</color>
+    <color name="gray">#6A6A6A</color>
+    <color name="yellow">#FCEC18</color>
+    <color name="underline">#E1E1E1</color>
+
 </resources>

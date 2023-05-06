@@ -2,103 +2,103 @@ package com.francescomalagrino.go4lunch.data;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
 import java.util.List;
 
-public class User {
-
+public class User implements Serializable {
+    @SerializedName("uid")
+    @Expose
     private String uid;
+    @SerializedName("username")
+    @Expose
     private String username;
-
-    private String restoToday;
-    private String restoTodayName;
-    private String restoDate;
-    private Boolean isWorkMates;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("reservation")
+    @Expose
+    private Restaurant restaurant;
+    @SerializedName("restaurantLiked")
+    @Expose
+    private List<String> restaurantLiked;
+    @SerializedName("urlPicture")
+    @Expose
     @Nullable
     private String urlPicture;
-    private List<String> restoLike;
+    @SerializedName("notification")
+    @Expose
+    private boolean notification;
 
     public User() {
     }
 
-    public User(String uid, String username, String urlPicture) {
+    public User(String uid, String username, String email, @Nullable String urlPicture, Restaurant restaurant, List<String> restaurantLiked, boolean notification) {
         this.uid = uid;
         this.username = username;
-        this.restoToday = "";
-        this.restoTodayName = "";
-        this.restoDate = "";
+        this.email = email;
         this.urlPicture = urlPicture;
-        this.restoLike = new ArrayList<>();
-        this.isWorkMates = false;
-
-
+        this.restaurant = restaurant;
+        this.restaurantLiked = restaurantLiked;
+        this.notification = notification;
     }
 
-    // --- GETTERS ---
     public String getUid() {
         return uid;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public Boolean getIsWorkMates() {
-        return isWorkMates;
-    }
-
-
-    //in only today not all the date! so we can keep today but i can remove the restaurant if the date change and can show a toast like You have not eat yet or no restaurant selected
-    public String getRestoToday() {
-        return restoToday;
-    }
-
-    public String getRestoTodayName() {
-        return restoTodayName;
-    }
-
-    public String getRestoDate() {
-        return restoDate;
-    }
-
-    public String getUrlPicture() {
-        return urlPicture;
-    }
-
-    public List<String> getRestoLike() {
-        return restoLike;
-    }
-    // --- SETTERS ---
-
-    public void setIsWorkMates(Boolean workMates) {
-        isWorkMates = workMates;
     }
 
     public void setUid(String uid) {
         this.uid = uid;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
 
-    public void setRestoToday(String restoToday) {
-        this.restoToday = restoToday;
+    public String getEmail() {
+        return email;
     }
 
-    public void setRestoTodayName(String restoTodayName) {
-        this.restoTodayName = restoTodayName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public void setRestoDate(String restoDate) {
-        this.restoDate = restoDate;
+    @Nullable
+    public String getUrlPicture() {
+        return urlPicture;
     }
 
-    public void setUrlPicture(String urlPicture) {
+    public void setUrlPicture(@Nullable String urlPicture) {
         this.urlPicture = urlPicture;
     }
 
-    public void setRestoLike(List<String> restoLike) {
-        this.restoLike = restoLike;
+    public Restaurant getReservation() {
+        return restaurant;
+    }
+
+    public void setReservation(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public List<String> getRestaurantLiked() {
+        return restaurantLiked;
+    }
+
+    public void setRestaurantLiked(List<String> restaurantLiked) {
+        this.restaurantLiked = restaurantLiked;
+    }
+
+    public boolean isNotification() {
+        return notification;
+    }
+
+    public void setNotification(boolean notification) {
+        this.notification = notification;
     }
 }

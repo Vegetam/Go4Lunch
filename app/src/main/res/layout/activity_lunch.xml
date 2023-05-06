@@ -6,12 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    >
+    tools:openDrawer="start">
 
     <include
+        android:id="@+id/app_bar_lunch"
         layout="@layout/app_bar_lunch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
@@ -19,7 +20,11 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header"
-        app:menu="@menu/actvity_lunch_drawer"
-        />
+        android:background="@color/colorPrimary"
+        app:itemTextColor="@color/white"
+        app:headerLayout="@layout/nav_header_lunch"
+        app:menu="@menu/activity_main_drawer"
+        tools:viewBindingIgnore="false"
+        app:itemIconTint="@color/white"/>
+
 </androidx.drawerlayout.widget.DrawerLayout>

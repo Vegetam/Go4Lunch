@@ -17,6 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.francescomalagrino.go4lunch.R;
 import com.francescomalagrino.go4lunch.repo.SliderAdapter;
+import com.francescomalagrino.go4lunch.ui.main.MainActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
