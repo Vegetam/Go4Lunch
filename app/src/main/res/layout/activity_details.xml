@@ -40,7 +40,7 @@
         android:id="@+id/view_detail"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/orange"
         app:layout_constraintBottom_toTopOf="@id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

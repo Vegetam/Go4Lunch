@@ -93,8 +93,10 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ListViewHolder
 
         // SETTING OPENING
         if (restaurant.getOpeningHours() != null) {
+            Log.e("Open Now",restaurant.getOpeningHours().getWeekdayText().toString());
             if (restaurant.getOpeningHours().getOpenNow()) {
                 holder.tv_opening.setText(R.string.Open_now);
+
             } else {
                 holder.tv_opening.setText(R.string.Close);
             }

@@ -64,8 +64,15 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
         mViewModel = new ViewModelProvider(this, ViewModelFactory.getInstance(getContext())).get(MapsViewModel.class);
 
         //mViewModel.getRestaurants().observe(getViewLifecycleOwner(), this::updateView);
-        mapFragment.getMapAsync(this);
+        //mapFragment.getMapAsync(this);
 
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mapFragment.getMapAsync(this);
     }
 
     @Override
@@ -88,16 +95,16 @@ public class MapsFragment extends Fragment implements GoogleMap.OnMarkerClickLis
         for(int i = 0; i < Objects.requireNonNull(restaurants).size() ; i++){
             LatLng position = new LatLng(restaurants.get(i).getLat(), restaurants.get(i).getLng());
             Marker marker;
-           //if (restaurants.get(i).getClientsTodayList().size() > 0){
-            //    marker = googleMap.addMarker(new MarkerOptions().position(position)
-              //          .title(restaurants.get(i).getRestoName())
-                //        .icon(getMarkerIcon("#22ad1f")));
-                //Objects.requireNonNull(marker).setTag(i);
-            //}else{
+           if (restaurants.get(i).getHasBeenReservedBy().size() > 0){
+                marker = googleMap.addMarker(new MarkerOptions().position(position)
+                        .title(restaurants.get(i).getRestoName())
+                       .icon(getMarkerIcon("#22ad1f")));
+               Objects.requireNonNull(marker).setTag(restaurants.get(i));
+            }else{
                 marker = googleMap.addMarker(new MarkerOptions().position(position)
                         .title(restaurants.get(i).getRestoName()));
                 Objects.requireNonNull(marker).setTag(restaurants.get(i));
-           // }
+            }
 
 
         }

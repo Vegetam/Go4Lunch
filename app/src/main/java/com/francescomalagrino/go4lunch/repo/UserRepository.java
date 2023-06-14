@@ -4,6 +4,7 @@ import android.content.Context;
 import android.location.Location;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -13,7 +14,9 @@ import com.francescomalagrino.go4lunch.data.Restaurant;
 import com.francescomalagrino.go4lunch.data.User;
 import com.francescomalagrino.go4lunch.data.nearby.Result;
 import com.francescomalagrino.go4lunch.repo.RestaurantRepository;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -22,8 +25,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -167,16 +172,48 @@ public class UserRepository {
     }
 
     // Set a reservation in Firestore
-    public void addReservation(Restaurant restaurant) {
+    public MutableLiveData<Boolean> addReservation(Restaurant restaurant) {
+        MutableLiveData<Boolean> resultLiveData = new MutableLiveData<>();
         String uid = this.getCurrentUserUID();
         if(uid != null) {
-            this.getUsersCollection().document(uid).update(RESERVATION_FIELD, restaurant);
-            //myUser.setReservation(restaurant);
-            ArrayList<User> usersList = (ArrayList<User>) restaurant.getHasBeenReservedBy();
-            usersList.add(myUser);
-            restaurant.setHasBeenReservedBy(usersList);
-            RestaurantRepository.getRestaurantsCollection().document(restaurant.getPlaceId()).set(restaurant);
+
+            this.getUsersCollection()
+                    .document(uid)
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                            if (task.isSuccessful()) {
+                                DocumentSnapshot documentSnapshot = task.getResult();
+                                Restaurant prevRestaurant =  Objects.requireNonNull(documentSnapshot.toObject(User.class)).getReservation();
+                                if(prevRestaurant != null) {
+                                    ArrayList<User> usersList = (ArrayList<User>) prevRestaurant.getHasBeenReservedBy();
+                                    for(User user: usersList) {
+                                        if(user.getUsername().equals(myUser.getUsername())) {
+                                            usersList.remove(user);
+                                        }
+                                    }
+                                    prevRestaurant.setHasBeenReservedBy(usersList);
+                                    RestaurantRepository.getRestaurantsCollection().document(prevRestaurant.getPlaceId()).set(prevRestaurant);
+                                }
+                                UserRepository.this.getUsersCollection().document(uid).update(RESERVATION_FIELD, restaurant);
+                                //myUser.setReservation(restaurant);
+                                ArrayList<User> usersList = (ArrayList<User>) restaurant.getHasBeenReservedBy();
+                                usersList.add(myUser);
+                                restaurant.setHasBeenReservedBy(usersList);
+                                RestaurantRepository.getRestaurantsCollection().document(restaurant.getPlaceId()).set(restaurant);
+                                resultLiveData.setValue(true); // Indicate success
+
+                            }
+
+                        }
+                    });
+
+
         }
+
+        return resultLiveData;
     }
 
     // Add a restaurant in the favorite list in Firestore
@@ -232,19 +269,6 @@ public class UserRepository {
     }
 
     // Get all users who reserved this restaurant
-    public List<User> getJoiningUsers(String restaurant) {
-        List<User> joiningUsers = new ArrayList<>();
-        for(int i = 0; i< Objects.requireNonNull(liveUsers.getValue()).size() ; i++){
-            if(liveUsers.getValue().get(i).getReservation()==null){
-                continue;
-            }
-            if (liveUsers.getValue().get(i).getReservation().equals(restaurant)){
-                joiningUsers.add(liveUsers.getValue().get(i));
-            }
-
-        }
-        return joiningUsers;
-    }
 
     //---------------
     // GETTERS AND SETTERS

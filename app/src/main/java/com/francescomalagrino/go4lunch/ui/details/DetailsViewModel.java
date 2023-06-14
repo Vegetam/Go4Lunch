@@ -32,7 +32,6 @@ public class DetailsViewModel extends ViewModel {
     public void init(String place_id, String restaurant_name) {
 
       //  RestaurantRepository.FetchDetail(place_id);
-        JoiningUsers = userSource.getJoiningUsers(restaurant_name);
         userSource.fetchUserData();
     }
 
@@ -82,8 +81,8 @@ public class DetailsViewModel extends ViewModel {
     }
 
     // SET THIS RESTAURANT AS RESERVED IN FIRESTORE
-    public void addReservation(Restaurant restaurant){
-        userSource.addReservation(restaurant);
+    public  MutableLiveData<Boolean> addReservation(Restaurant restaurant){
+       return userSource.addReservation(restaurant);
     }
 
     // -------------

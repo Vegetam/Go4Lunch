@@ -123,6 +123,7 @@ public class RestaurantRepository {
                                                         restaurant.setPhoneNumber(detailResult.getFormattedPhoneNumber());
                                                         restaurant.setOpeningHours(detailResult.getOpeninghours());
                                                         restaurant.setHasBeenReservedBy(new ArrayList<>());
+                                                        restaurant.setRestaurantLiked(new ArrayList<>());
                                                         restaurants.add(restaurant);
                                                     } catch (IOException e) {
                                                         throw new RuntimeException(e);

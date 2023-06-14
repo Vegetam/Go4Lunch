@@ -31,7 +31,6 @@ public class DetailsViewModel extends ViewModel {
     public void init(String place_id, String restaurant_name) {
 
         //RestaurantRepository.FetchDetail(place_id);
-        JoiningUsers = userSource.getJoiningUsers(restaurant_name);
         userSource.fetchUserData();
     }
 

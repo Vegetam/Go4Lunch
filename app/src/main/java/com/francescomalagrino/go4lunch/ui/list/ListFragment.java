@@ -44,8 +44,13 @@ public class ListFragment extends Fragment {
 
         mViewModel = new ViewModelProvider(this, ViewModelFactory.getInstance(getContext())).get(ListViewModel.class);
 
-        mViewModel.getRestaurants().observe(getViewLifecycleOwner(), this::updateView);
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mViewModel.getRestaurants().observe(getViewLifecycleOwner(), this::updateView);
 
     }
 

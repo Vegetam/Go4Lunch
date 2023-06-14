@@ -34,6 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
     private DetailsViewModel mViewModel;
     private String photoURL;
     protected boolean liked = false;
+
     protected boolean hasReserved = false;
     protected List<User> users;
     Restaurant restaurant = new Restaurant();
@@ -101,6 +102,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     @SuppressLint("NotifyDataSetChanged")
     private void setupRecyclerView() {
+        Gson gson = new Gson();
+        Log.e("HasReseverBY" , gson.toJson(restaurant.getHasBeenReservedBy()));
         if(restaurant.getHasBeenReservedBy() !=null) {
             RecyclerView recyclerView = findViewById(R.id.recyclerview_detail);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -167,9 +170,15 @@ public class DetailsActivity extends AppCompatActivity {
                 binding.btnReserved.setImageTintList(AppCompatResources.getColorStateList(this, R.color.colorMyGrey));
                 mViewModel.removeReservation(restaurant);
             }else{
-                hasReserved = true;
-                binding.btnReserved.setImageTintList(AppCompatResources.getColorStateList(this, R.color.colorGreen));
-                mViewModel.addReservation(restaurant);
+                  mViewModel.addReservation(restaurant).observe(this, isSuccessfull -> {
+                      if(isSuccessfull) {
+                          hasReserved = true;
+                          binding.btnReserved.setImageTintList(AppCompatResources.getColorStateList(this, R.color.colorGreen));
+                          this.setupRecyclerView();
+                      }else {
+                          Log.e("Error", "Error during adding");
+                      }
+                  });
             }
             this.setupRecyclerView();
         });

@@ -22,7 +22,6 @@ public class Restaurant implements Serializable {
     private Float rating;
     private String website;
 
-    private List<String> clientsTodayList;
 
     private String formattedAddress;
     private String phoneNumber;
@@ -33,19 +32,17 @@ public class Restaurant implements Serializable {
 
     private OpeningHours openingHours;
 
+    private List<String> restaurantLiked;
+
     public Restaurant() {}
 
 
     public Restaurant(String restoName, String address) {
         this.restoName = restoName;
-        this.clientsTodayList = new ArrayList<>();
         this.address = address;
         this.formattedAddress=formattedAddress;
-        this.lat= lat;
-        this.lng=lng;
         this.placeId=placeId;
         this.photoReferece=photoReferece;
-        this.rating=rating;
         this.website=website;
         this.phoneNumber=phoneNumber;
         this.hasBeenReservedBy = new ArrayList<User>(hasBeenReservedBy);
@@ -57,14 +54,12 @@ public class Restaurant implements Serializable {
     @ServerTimestamp
     public Date getDateCreated() {
         return dateCreated; }
-    public List<String> getClientsTodayList() {
-        return clientsTodayList; }
+
     public String getAddress() { return address;}
 
     // --- SETTERS ---
     public void setRestoName(String restoName) { this.restoName = restoName; }
     public void setDateCreated(Date dateCreated) { this.dateCreated = dateCreated; }
-    public void setClientsTodayList(List<String> clientsTodayList) { this.clientsTodayList = clientsTodayList; }
     public void setAddress(String address) {this.address = address;}
 
     public Double getLat() {
@@ -148,10 +143,6 @@ public class Restaurant implements Serializable {
         this.hasBeenReservedBy = hasBeenReservedBy;
     }
 
-    public void addHasBeenReservedBy(User user){
-        hasBeenReservedBy.add(user);
-    }
-
     public String getVicinity() {
         return vicinity;
     }
@@ -168,4 +159,11 @@ public class Restaurant implements Serializable {
         this.openingHours = openingHours;
     }
 
+    public List<String> getRestaurantLiked() {
+        return restaurantLiked;
+    }
+
+    public void setRestaurantLiked(List<String> restaurantLiked) {
+        this.restaurantLiked = restaurantLiked;
+    }
 }
